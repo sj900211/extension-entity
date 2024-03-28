@@ -7,7 +7,7 @@ import run.freshr.common.mappers.EnumModel;
 /**
  * 권한 데이터 관리
  *
- * @author 류성재
+ * @author FreshR
  * @apiNote 권한 데이터 관리
  * @since 2024. 3. 28. 오후 2:59:27
  */

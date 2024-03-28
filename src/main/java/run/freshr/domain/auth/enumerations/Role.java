@@ -10,7 +10,7 @@ import run.freshr.common.mappers.EnumModel;
 /**
  * 권한 데이터 관리
  *
- * @author 류성재
+ * @author FreshR
  * @apiNote 권한 데이터 관리
  * @since 2024. 3. 28. 오후 3:01:53
  */
@@ -47,7 +47,7 @@ public enum Role implements EnumModel {
   /**
    * 권한 목록 정의
    *
-   * @author 류성재
+   * @author FreshR
    * @apiNote Annotation 에서 사용하기 위해 권한 name 을 불변 속성으로 정의
    * @since 2024. 3. 28. 오후 3:01:53
    */
