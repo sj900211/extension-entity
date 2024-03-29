@@ -1,7 +1,6 @@
 package run.freshr.common.utils;
 
 import java.util.Optional;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import run.freshr.common.extensions.entity.EntityAuditLogicalExtension;
 import run.freshr.common.extensions.entity.EntityAuditPhysicalExtension;
@@ -16,7 +15,6 @@ import run.freshr.common.extensions.entity.EntityPhysicalExtension;
  *          모두 똑같은 검증이지만 parameter 속성이 같은 관계로 오버로딩 기능을 사용하지 못함
  * @since 2024. 3. 28. 오후 2:22:28
  */
-@Slf4j
 @Component
 public class EntityValidateUtil {
 
@@ -32,8 +30,6 @@ public class EntityValidateUtil {
    */
   public static <E extends EntityAuditLogicalExtension<?>> boolean validateAuditorLogical(
       Optional<E> optional) {
-    log.info("EntityValidateUtil.validateAuditorLogical");
-
     if (optional.isEmpty()) {
       return false;
     }
@@ -54,8 +50,6 @@ public class EntityValidateUtil {
    * @since 2024. 3. 28. 오후 2:22:28
    */
   public static <E extends EntityLogicalExtension> boolean validateLogical(Optional<E> optional) {
-    log.info("EntityValidateUtil.validateLogical");
-
     if (optional.isEmpty()) {
       return false;
     }
@@ -77,8 +71,6 @@ public class EntityValidateUtil {
    */
   public static <E extends EntityAuditPhysicalExtension<?>> boolean validateAuditorPhysical(
       Optional<E> optional) {
-    log.info("EntityValidateUtil.validateAuditorPhysical");
-
     return optional.isPresent();
   }
 
@@ -93,8 +85,6 @@ public class EntityValidateUtil {
    * @since 2024. 3. 28. 오후 2:22:28
    */
   public static <E extends EntityPhysicalExtension> boolean validatePhysical(Optional<E> optional) {
-    log.info("EntityValidateUtil.validateLogical");
-
     return optional.isPresent();
   }
 
