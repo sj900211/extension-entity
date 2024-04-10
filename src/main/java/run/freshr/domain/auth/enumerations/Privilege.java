@@ -1,7 +1,6 @@
 package run.freshr.domain.auth.enumerations;
 
 import lombok.Getter;
-import lombok.extern.slf4j.Slf4j;
 import run.freshr.common.mappers.EnumModel;
 
 /**
@@ -11,7 +10,6 @@ import run.freshr.common.mappers.EnumModel;
  * @apiNote 권한 데이터 관리
  * @since 2024. 3. 28. 오후 2:59:27
  */
-@Slf4j
 public enum Privilege implements EnumModel {
 
   MANAGER_MAJOR("시스템 관리자", Role.ROLE_MANAGER_MAJOR),

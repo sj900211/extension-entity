@@ -4,6 +4,8 @@ import static jakarta.persistence.EnumType.STRING;
 import static java.time.LocalDateTime.now;
 import static java.time.format.DateTimeFormatter.ofPattern;
 import static lombok.AccessLevel.PROTECTED;
+import static org.springframework.data.elasticsearch.annotations.DateFormat.date_hour_minute_second_millis;
+import static org.springframework.data.elasticsearch.annotations.FieldType.Date;
 import static run.freshr.domain.account.enumerations.AccountStatus.WITHDRAWAL;
 
 import jakarta.persistence.Column;
@@ -17,18 +19,17 @@ import java.time.LocalDateTime;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.hibernate.annotations.Comment;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.elasticsearch.annotations.Document;
+import org.springframework.data.elasticsearch.annotations.Field;
 import run.freshr.common.enumerations.Gender;
-import run.freshr.common.extensions.entity.EntityLogicalExtension;
+import run.freshr.common.extensions.entity.EntityDocumentLogicalExtension;
 import run.freshr.domain.account.enumerations.AccountStatus;
 import run.freshr.domain.auth.enumerations.Privilege;
 
-@Slf4j
 @Entity
 @Document(indexName = "account-info")
 @Table(
@@ -49,7 +50,7 @@ import run.freshr.domain.auth.enumerations.Privilege;
 @DynamicUpdate
 @NoArgsConstructor(access = PROTECTED)
 @Comment("사용자 관리 > 계정 관리")
-public class Account extends EntityLogicalExtension {
+public class Account extends EntityDocumentLogicalExtension {
 
   @Id
   @Comment("일련 번호")
@@ -84,7 +85,7 @@ public class Account extends EntityLogicalExtension {
   @Comment("이전 비밀번호")
   private String previousPassword;
 
-  @Transient
+  @Field(type = Date, format = date_hour_minute_second_millis)
   @Comment("최근 접속 날짜 시간")
   private LocalDateTime signAt;
 
@@ -103,6 +104,8 @@ public class Account extends EntityLogicalExtension {
     this.nickname = nickname;
     this.password = password;
     this.previousPassword = password;
+
+    create();
   }
 
   public void updateEntity(Gender gender, String nickname) {

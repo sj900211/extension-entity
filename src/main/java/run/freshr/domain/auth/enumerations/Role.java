@@ -1,10 +1,6 @@
 package run.freshr.domain.auth.enumerations;
 
-import static java.util.Arrays.stream;
-
-import java.util.Arrays;
 import lombok.Getter;
-import lombok.extern.slf4j.Slf4j;
 import run.freshr.common.mappers.EnumModel;
 
 /**
@@ -14,7 +10,6 @@ import run.freshr.common.mappers.EnumModel;
  * @apiNote 권한 데이터 관리
  * @since 2024. 3. 28. 오후 3:01:53
  */
-@Slf4j
 public enum Role implements EnumModel {
 
   ROLE_MANAGER_MAJOR("시스템 관리자", Privilege.MANAGER_MAJOR, true),
